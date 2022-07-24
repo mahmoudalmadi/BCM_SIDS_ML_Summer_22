@@ -266,6 +266,7 @@ def split_data(trial_time,path,type_data,trials,corrections = None):
                             trials[k][type_data].append(required_df)
                         else:
                             trials[k][type_data] = [required_df]
+            
             trials[i[:6]][type_data] = pd.concat(trials[i[:6]][type_data],axis = 0)
     return trials
 
@@ -344,7 +345,6 @@ def main_preprocess_data(paths,save_loc):
     
     trial_time = get_trial_time(meta_data)
     
-    
     static_data = {
     "MUID":["M21264","M21267","M21269","M21627","M21628","M21630","M20865","M20867","M20869","M20874","M21480","M21484","M21487","M20864","M20868","M20870","M21481","M21483","M21486","M21488"],
     "Line":["hm4d","hm4d","hm4d","hm4d","hm4d","hm4d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d","hm3d"],
@@ -352,6 +352,8 @@ def main_preprocess_data(paths,save_loc):
     "Weight":[4.06,3.92,5.6,4.54,5.81,5.65,3.41,3.43,4.44,3.8,4.49,3.37,3.72,3.74,4.04,4.61,4.25,4.64,4.79,4.67]
     }
     static_data = pd.DataFrame(static_data)
+
+    static_data["Mouse Type"] = static_data["Line"] + " " + static_data["Genotype"]
 
     with open(f"{save_loc}/static_data.obj",'wb') as file1:
         pickle.dump(static_data,file1)
@@ -379,13 +381,13 @@ def main_preprocess_data(paths,save_loc):
     trial_breath = split_data(trial_time,breath_path_4d,"breath",trial_breath)
     
     # saving the data
-    with open(f"{save_loc}/trials_raw.obj",'wb') as file1:
+    with open(f"{save_loc}/trials_raw1.obj",'wb') as file1:
         pickle.dump(trial_raw,file1)
 
-    with open(f"{save_loc}/trials_breath.obj",'wb') as file1:
+    with open(f"{save_loc}/trials_breath1.obj",'wb') as file1:
         pickle.dump(trial_breath,file1)
 
-    with open(f"{save_loc}/trials_ecg.obj",'wb') as file1:
+    with open(f"{save_loc}/trials_ecg1.obj",'wb') as file1:
         pickle.dump(trial_ecg,file1)
 
-main_preprocess_data(r"C:\Users\Mahmo\Desktop\BCM_SIDS_ML_Summer_22\data",r"C:\Users\Mahmo\Desktop\BCM_SIDS_ML_Summer_22\data")
+main_preprocess_data(r"C:\Users\Mahmoud\Desktop\BCM_SIDS_ML_Summer_22\BCM_SIDS_ML_Summer_22\data",r"C:\Users\Mahmoud\Desktop\BCM_SIDS_ML_Summer_22\BCM_SIDS_ML_Summer_22\data")
