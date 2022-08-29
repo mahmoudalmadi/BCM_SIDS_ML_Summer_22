@@ -390,4 +390,4 @@ def main_preprocess_data(paths,save_loc):
     with open(f"{save_loc}/trials_ecg1.obj",'wb') as file1:
         pickle.dump(trial_ecg,file1)
 
-main_preprocess_data(r"C:\Users\Mahmoud\Desktop\BCM_SIDS_ML_Summer_22\BCM_SIDS_ML_Summer_22\data",r"C:\Users\Mahmoud\Desktop\BCM_SIDS_ML_Summer_22\BCM_SIDS_ML_Summer_22\data")
+main_preprocess_data(r"C:\Users\Mahmoud Al-Madi\Desktop\BCM_SIDS_ML_Summer_22\Data",r"C:\Users\Mahmoud Al-Madi\Desktop\BCM_SIDS_ML_Summer_22\Data")
